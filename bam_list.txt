@@ -1,0 +1,2 @@
+Gp12-17.WGS.Nextera_XT.vs.globodera_pallida.PRJEB123.WBPS8.genomic.fixmate.sorted.bam = Gp12-17.WGS.Nextera_XT
+test.WGS.Nextera_XT.vs.globodera_pallida.PRJEB123.WBPS8.genomic.fixmate.sorted.bam = test.WGS.Nextera_XT
