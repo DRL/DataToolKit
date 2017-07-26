@@ -4,7 +4,7 @@
 """
 usage: bamCov.py        -b <FILE> --bam_names <FILE> -f <FILE>
                         [--gff <FILE>] [--genelist <FILE>]
-                        [-o <STR>]
+                        [-o <STR>] [--contig] [--exon] [--intron]
                         [-h|--help]
 
     Options:
@@ -17,6 +17,8 @@ usage: bamCov.py        -b <FILE> --bam_names <FILE> -f <FILE>
             -f, --fasta <FILE>                  Reference FASTA file
             --gff <FILE>                        GFF file
             -o, --outprefix <STR>               Output prefix
+            --contig                            Get coverage for contigs [default: False]
+            --intron                            Get coverage for introns [default: False]
 """
 
 
@@ -116,7 +118,12 @@ class Main():
         # self.featuretypes_of_interest = set(['contig', 'exon'])
         self.featureObjs_by_type = {}
         self.featureObjs_length_by_type = {}
-        self.featuretypes_of_interest = set(['exon'])
+        featuretypes_of_interest = ['exon']
+        if args['--contig']:
+            featuretypes_of_interest.append('contig')
+        if args['--intron']:
+            featuretypes_of_interest.append('intron')
+        self.featuretypes_of_interest = set(featuretypes_of_interest)
         if 'contig' in self.featuretypes_of_interest:
             self.add_contigs_as_features()
         self.parse_gff()
